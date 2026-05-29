@@ -25,6 +25,8 @@ Testcases :
 
 Mostly all you are Sanity and Smoke testcases are in automation list.
 
+_init_.py is 1dt file in page object model and test cases .....becoz python identifies this folder as package....it will easier for importing..modules from package
+
 """
 import allure
 import pytest
@@ -178,7 +180,8 @@ class Test_User_Profile :
         fake_email = Faker().email()# New
         self.log.info(f"Generated fake data for username--> {fake_username} and email --> {fake_email}")
         password_data = "Credence_user_101@123"
-        self.rp = Registration_Page_Class(self.driver)
+        self.rp = Registration_Page_Class(self.driver)####driver is passed inside...brackets becoz this is instnace method...@the time of object creation...
+        # ..we need to give constructor parameter(defined in loginpageclass)....without driver regclass cannot locate element...
         # Enter Username
         self.log.info(f"Entering the Username--> {fake_username}")
         self.rp.Enter_Name(fake_username)
